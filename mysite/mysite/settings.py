@@ -39,7 +39,13 @@ INSTALLED_APPS = [
 
     #apps
     'home.apps.HomeConfig',
-    'ads.apps.AdsConfig'
+    'ads.apps.AdsConfig',
+
+    "polls.apps.PollsConfig",
+    # "home.apps.HomeConfig",
+    "hello.apps.HelloConfig",
+    "autos.apps.AutosConfig",
+    "cats.apps.CatsConfig",
 ]
 
 # When we get to tagging

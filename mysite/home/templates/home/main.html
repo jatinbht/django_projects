@@ -1,7 +1,33 @@
 {% extends "base_bootstrap.html" %}
 {% block content %}
-    <h1>Welcome to {{ settings.APP_NAME }}</h1>
-    <p>
-    Hello world.
-    </p>
+  <h1>Welcome to {{ settings.APP_NAME }}</h1>
+
+  <p>Here's the link:</p>
+  <ul>
+    <li>
+      <p><a href="/ads">Bring 'CLASSIFIED SECTION' out of newspapers!</a></p>
+    </li>
+  </ul>
+    
+
+    
+  <div class="p-3 mb-4 border-start border-4 border-primary bg-light rounded">
+  <p class="mb-2">
+    In case you would like to log in, here's a test user:
+  </p>
+  <pre class="mb-0">
+    username: dj4e
+    password: 3b1f24b97
+  </pre>
+    </div>
+
+    <br><br>
+    
+  <h3>See also:</h3>
+  <ul>
+    <li><p><a href="/polls">A Polls Application</a></p></li>
+    <li><p><a href="/hello">Test the session</a></p></li>
+    <li><p><a href="/autos">Autos CRUD</a></p></li>
+    <li><p><a href="/cats">Cats CRUD</a></p></li>
+  </ul>
 {% endblock content %}

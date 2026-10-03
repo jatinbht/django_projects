@@ -13,24 +13,32 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-import os
 from django.contrib import admin
 from django.urls import path, include, re_path
-from django.conf import settings
-from django.contrib.auth import views as auth_views
-from django.views.static import serve
 from django.views.generic import TemplateView
+
+import os
+from django.views.static import serve
+
+from django.conf import settings
 
 urlpatterns = [
     path('', include('home.urls')),  # Change to ads.urls
     path('admin/', admin.site.urls),  # Keep
     path('accounts/', include('django.contrib.auth.urls')),  # Keep
     re_path(r'^oauth/', include('social_django.urls', namespace='social')),  # Keep
-    path('ads/', include('ads.urls'))
+    path('ads/', include('ads.urls')),
+
+    path("polls/", include("polls.urls")),
+    path("hello/", include("hello.urls")),
+    # path('accounts/', include('django.contrib.auth.urls')),  # Add
+    path('autos/', include('autos.urls')),                   # Add
+    path('cats/', include('cats.urls')),
 ]
 
 # Serve the static HTML
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SITE_ROOT = os.path.join(BASE_DIR, 'site')
 urlpatterns += [
     re_path(r'^site/(?P<path>.*)$', serve,
         {'document_root': os.path.join(BASE_DIR, 'site'),
@@ -49,6 +57,7 @@ urlpatterns += [
 ]
 
 # Switch to social login if it is configured - Keep for later
+from django.contrib.auth import views as auth_views
 try:
     from . import github_settings
     social_login = 'registration/login_social.html'
